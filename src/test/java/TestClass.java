@@ -1,6 +1,11 @@
 import com.codeborne.selenide.*;
 import org.junit.Assert;
 import org.junit.Test;
+import org.junit.jupiter.api.RepeatedTest;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.CsvSource;
+import org.openqa.selenium.Dimension;
+import org.openqa.selenium.Point;
 
 import java.time.Duration;
 import java.util.Random;
@@ -11,27 +16,27 @@ public class TestClass extends BaseTest {
     public static String baseUrl = "http://automationpractice.com/";
 
     @Test
-    public void test(){
+    public void test() {
         open(baseUrl);
         $$(".item-img").should(CollectionCondition.size(7)).get(4).scrollTo();
     }
 
-    @Test
+    @RepeatedTest(2)
     public void test1() {
         open(baseUrl);
         $("[alt^='Faded']").shouldBe(Condition.appear, Duration.ofSeconds(20)).hover();
         $$(".lnk_view > span").should(CollectionCondition.size(14)).get(0).click();
         $("#color_13").shouldNot(Condition.image).click();
-        Assert.assertEquals($("#color_13").getLocation().toString(),"(1136, 640)");
-        Assert.assertEquals($("#color_13").getSize().toString(),"(22, 22)");
-        Assert.assertEquals($("#color_13").getCssValue("background-color"),"rgba(243, 156, 17, 1)");
+        Assert.assertEquals($("#color_13").getLocation(), new Point(1136, 640));//1019
+        Assert.assertEquals($("#color_13").getSize(), new Dimension(22, 22));
+        Assert.assertEquals($("#color_13").getCssValue("background-color"), "rgba(243, 156, 17, 1)");
         String currentUrl = WebDriverRunner.getWebDriver().getCurrentUrl();
         Assert.assertTrue(currentUrl.endsWith("color-orange"));
         $(".color_pick:not(#color_13)").click();
         currentUrl = WebDriverRunner.getWebDriver().getCurrentUrl();
         Assert.assertTrue(currentUrl.contains("color-blue"));
-        SelenideElement element =$("#group_1");
-        if(element.is(Condition.name("group_1"))){
+        SelenideElement element = $("#group_1");
+        if (element.is(Condition.name("group_1"))) {
             element.click();
         }
         $("[title='M']").click();
@@ -43,19 +48,24 @@ public class TestClass extends BaseTest {
         Assert.assertTrue(currentUrl.contains("size-l"));
     }
 
-    @Test
-    public void test2() {
-        open("http://automationpractice.com/");
+    @ParameterizedTest
+    @CsvSource({
+            "ska@mail.ru, Qwerty123, Maksim test",
+            "test22@gamil.com, Qwerty123, test test"
+    })
+    public void test2(String mail, String password, String message) {
+        open(baseUrl);
         $(".login").shouldBe(Condition.visible, Duration.ofSeconds(20)).click();
-        $("#email").shouldBe(Condition.empty).setValue("ska@mail.ru");
-        $("#passwd").shouldBe(Condition.empty).setValue("Qwerty123").pressEnter();
-        Assert.assertEquals("Maksim test", $(".account").shouldBe(Condition.exist,
+        $("#email").shouldBe(Condition.empty).setValue(mail);
+        $("#passwd").shouldBe(Condition.empty).setValue(password).pressEnter();
+        Assert.assertEquals(message, $(".account").shouldBe(Condition.exist,
                 Duration.ofSeconds(20)).getText());
+        $(".logout").should(Condition.visible).click();
     }
 
     @Test
     public void test3() {
-        open("http://automationpractice.com/");
+        open(baseUrl);
         $("#newsletter-input").shouldBe(Condition.name("email")).setValue("test@gmail.com").pressEnter();
         Assert.assertEquals("Newsletter : This email address is already registered.",
                 $(".alert").getText());
@@ -79,7 +89,7 @@ public class TestClass extends BaseTest {
 
     @Test
     public void test4() {
-        open("http://automationpractice.com/");
+        open(baseUrl);
         $("[alt='Blouse']").shouldBe(Condition.enabled, Duration.ofSeconds(20)).hover();
         $$(".lnk_view span").should(CollectionCondition.size(14)).get(1).click();
         $("#quantity_wanted").shouldBe(Condition.name("qty")).setValue("3");
@@ -87,7 +97,7 @@ public class TestClass extends BaseTest {
         $("[title='L']").click();
         $("#color_11").shouldBe(Condition.name("Black")).click();
         $("#add_to_cart > button").click();
-        $(".button-medium").click();
+        $(".button-medium").shouldBe(Condition.visible, Duration.ofSeconds(10)).click();
         Assert.assertEquals("Color : Black, Size : L", $("small:nth-child(3) a")
                 .shouldBe(Condition.exist, Duration.ofSeconds(20)).getText());
         Assert.assertEquals("3", $(".cart_quantity_input").shouldBe(Condition.exist).getValue());
@@ -95,14 +105,15 @@ public class TestClass extends BaseTest {
 
     @Test
     public void test5() {
-        open("http://automationpractice.com/");
+        open(baseUrl);
         $$(".sf-with-ul").should(CollectionCondition.size(4), Duration.ofSeconds(20)).get(0).click();
         $("[alt$='shirts']").should(Condition.visible).hover();
         $$(".add_to_compare").should(CollectionCondition.size(7)).get(0).click();
-        $(".total-compare-val").shouldNotHave(Condition.text("2"), Duration.ofSeconds(10));
-        $("[alt='Blouse']").should(Condition.visible).hover();
-        $$(".add_to_compare").should(CollectionCondition.size(7)).get(1).click();;
-        $(".total-compare-val").shouldBe(Condition.text("2"), Duration.ofSeconds(10));
+        $(".total-compare-val").shouldHave(Condition.text("1"), Duration.ofSeconds(20));
+        $("[alt='Blouse']").should(Condition.visible, Duration.ofSeconds(10)).hover();
+        $$(".add_to_compare").should(CollectionCondition.size(7), Duration.ofSeconds(10)).get(1).click();
+        ;
+        $(".total-compare-val").shouldHave(Condition.text("2"), Duration.ofSeconds(20));
         $("[alt='Printed Dress']").should(Condition.visible).hover();
         $$(".add_to_compare").should(CollectionCondition.size(7)).get(2).click();
         $(".bt_compare").click();
