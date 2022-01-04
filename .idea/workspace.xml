@@ -5,10 +5,14 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="529fd3f6-5bf0-47a3-828e-6acf6b9dd2ee" name="Changes" comment="test">
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_apiguardian_apiguardian_api_1_1_2.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_junit_jupiter_junit_jupiter_api_5_8_2.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_junit_jupiter_junit_jupiter_params_5_8_2.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_junit_platform_junit_platform_commons_1_8_2.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/build/reports/tests/1641320805437.0.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/build/reports/tests/1641320805437.0.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/build/reports/tests/1641321625423.0.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/build/reports/tests/1641321625423.0.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/build/reports/tests/1641322521334.0.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/build/reports/tests/1641322521334.0.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__junit_junit_4_13_2.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_hamcrest_hamcrest_core_1_3.xml" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/test/java/BaseTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/BaseTest.java" afterDir="false" />
@@ -60,22 +64,12 @@
     <property name="project.structure.side.proportion" value="0.2" />
     <property name="settings.editor.selected.configurable" value="reference.settings.project.maven.repository.indices" />
   </component>
-  <component name="RunManager" selected="JUnit.TestClass.test2">
+  <component name="RunManager" selected="JUnit.TestClass">
     <configuration name="TestClass" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="srlenium" />
       <option name="PACKAGE_NAME" value="" />
       <option name="MAIN_CLASS_NAME" value="TestClass" />
       <option name="TEST_OBJECT" value="class" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="TestClass.test1 (1)" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="srlenium" />
-      <option name="PACKAGE_NAME" value="" />
-      <option name="MAIN_CLASS_NAME" value="TestClass" />
-      <option name="METHOD_NAME" value="test1" />
-      <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -100,6 +94,16 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <configuration name="TestClass.test4" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="srlenium" />
+      <option name="PACKAGE_NAME" value="" />
+      <option name="MAIN_CLASS_NAME" value="TestClass" />
+      <option name="METHOD_NAME" value="test4" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <configuration name="TestClass.test5" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="srlenium" />
       <option name="PACKAGE_NAME" value="" />
@@ -112,11 +116,11 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="JUnit.TestClass.test2" />
-        <item itemvalue="JUnit.TestClass.test5" />
         <item itemvalue="JUnit.TestClass" />
+        <item itemvalue="JUnit.TestClass.test4" />
+        <item itemvalue="JUnit.TestClass.test5" />
+        <item itemvalue="JUnit.TestClass.test2" />
         <item itemvalue="JUnit.TestClass.test3" />
-        <item itemvalue="JUnit.TestClass.test1 (1)" />
       </list>
     </recent_temporary>
   </component>
@@ -160,7 +164,7 @@
       <workItem from="1640118297771" duration="11345000" />
       <workItem from="1640537643979" duration="17338000" />
       <workItem from="1640939285996" duration="3450000" />
-      <workItem from="1641307549059" duration="5983000" />
+      <workItem from="1641307549059" duration="11302000" />
     </task>
     <task id="LOCAL-00001" summary="test">
       <created>1639922457118</created>

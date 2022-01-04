@@ -1,11 +1,15 @@
 import com.codeborne.selenide.Configuration;
-import org.junit.Before;
+import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.AfterEach;
-import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.BeforeAll;
 import org.openqa.selenium.chrome.ChromeOptions;
 
+import static com.codeborne.selenide.Selenide.closeWebDriver;
+
 abstract public class BaseTest {
-    public void setUp() {
+
+    @BeforeAll
+    public static void setAll() {
         Configuration.browser = "chrome";
         Configuration.browserVersion = "92.1";
         Configuration.screenshots = true;
@@ -16,14 +20,14 @@ abstract public class BaseTest {
         Configuration.browserCapabilities = options;
     }
 
-    @BeforeEach
-    @Before
-    public void init() {
-        setUp();
+    @AfterAll
+    public static void afterAll() {
+        System.out.println("@AfterAll executed");
     }
 
     @AfterEach
     public void tearThis() {
         System.out.println("@AfterEach executed");
+        closeWebDriver();
     }
 }
