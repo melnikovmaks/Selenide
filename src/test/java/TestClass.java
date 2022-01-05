@@ -124,7 +124,6 @@ public class TestClass extends BaseTest {
         $(".total-compare-val").shouldHave(Condition.text("1"), Duration.ofSeconds(20));
         $("[alt='Blouse']").should(Condition.visible, Duration.ofSeconds(10)).hover();
         $$(".add_to_compare").should(CollectionCondition.size(7), Duration.ofSeconds(10)).get(1).click();
-        ;
         $(".total-compare-val").shouldHave(Condition.text("2"), Duration.ofSeconds(20));
         $("[alt='Printed Dress']").should(Condition.visible).hover();
         $$(".add_to_compare").should(CollectionCondition.size(7)).get(2).click();

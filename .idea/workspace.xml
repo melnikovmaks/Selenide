@@ -5,21 +5,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="529fd3f6-5bf0-47a3-828e-6acf6b9dd2ee" name="Changes" comment="test">
-      <change afterPath="$PROJECT_DIR$/build/reports/tests/1641320805437.0.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/build/reports/tests/1641320805437.0.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/build/reports/tests/1641321625423.0.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/build/reports/tests/1641321625423.0.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/build/reports/tests/1641322521334.0.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/build/reports/tests/1641322521334.0.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__junit_junit_4_13_2.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_hamcrest_hamcrest_core_1_3.xml" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/BaseTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/BaseTest.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/test/java/TestClass.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/TestClass.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/srlenium.iml" beforeDir="false" afterPath="$PROJECT_DIR$/srlenium.iml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/test-classes/TestClass.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/test-classes/TestClass.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/test-classes/baseTest.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/test-classes/baseTest.class" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -34,6 +22,11 @@
     </option>
   </component>
   <component name="Git.Settings">
+    <option name="RECENT_BRANCH_BY_REPOSITORY">
+      <map>
+        <entry key="$PROJECT_DIR$" value="master" />
+      </map>
+    </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="ProjectId" id="20jUZN4aLSLPMR14k2FHIopoxLC" />
@@ -64,7 +57,7 @@
     <property name="project.structure.side.proportion" value="0.2" />
     <property name="settings.editor.selected.configurable" value="reference.settings.project.maven.repository.indices" />
   </component>
-  <component name="RunManager" selected="JUnit.TestClass">
+  <component name="RunManager" selected="JUnit.TestClass.test2">
     <configuration name="TestClass" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="srlenium" />
       <option name="PACKAGE_NAME" value="" />
@@ -116,10 +109,10 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="JUnit.TestClass.test2" />
         <item itemvalue="JUnit.TestClass" />
         <item itemvalue="JUnit.TestClass.test4" />
         <item itemvalue="JUnit.TestClass.test5" />
-        <item itemvalue="JUnit.TestClass.test2" />
         <item itemvalue="JUnit.TestClass.test3" />
       </list>
     </recent_temporary>
@@ -164,7 +157,7 @@
       <workItem from="1640118297771" duration="11345000" />
       <workItem from="1640537643979" duration="17338000" />
       <workItem from="1640939285996" duration="3450000" />
-      <workItem from="1641307549059" duration="11302000" />
+      <workItem from="1641307549059" duration="12708000" />
     </task>
     <task id="LOCAL-00001" summary="test">
       <created>1639922457118</created>
