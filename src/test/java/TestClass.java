@@ -6,48 +6,56 @@ import org.openqa.selenium.Dimension;
 import org.openqa.selenium.Point;
 
 import java.time.Duration;
-import java.util.Random;
 
 import static com.codeborne.selenide.Selenide.*;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 @TestMethodOrder(MethodOrderer.OrderAnnotation.class)
 public class TestClass extends BaseTest {
-    public static String baseUrl = "http://automationpractice.com/";
+    static final String BASE_URL = "http://automationpractice.com/";
 
     @Disabled("It is not useful test")
     @Test
-    public void test() {
-        open(baseUrl);
-        $$(".item-img").should(CollectionCondition.size(7)).get(4).scrollTo();
+    public void scrollTo() {
+        open(BASE_URL);
+        ElementsCollection images = elements(".item-img");
+        images.should(CollectionCondition.size(7)).get(4).scrollTo();
     }
 
     @RepeatedTest(2)
     @DisplayName("Choice of color and size")
     @Order(3)
-    public void test1() {
-        open(baseUrl);
-        $("[alt^='Faded']").shouldBe(Condition.appear, Duration.ofSeconds(20)).hover();
-        $$(".lnk_view > span").should(CollectionCondition.size(14)).get(0).click();
-        $("#color_13").shouldNot(Condition.image).click();
-        Assertions.assertEquals($("#color_13").getLocation(), new Point(1136, 640));//1019
-        Assertions.assertEquals($("#color_13").getSize(), new Dimension(22, 22));
-        Assertions.assertEquals($("#color_13").getCssValue("background-color"), "rgba(243, 156, 17, 1)");
+    public void choiceOfColorAndSize() {
+        open(BASE_URL);
+        SelenideElement fadedClothes = element("[alt^='Faded']");
+        fadedClothes.shouldBe(Condition.appear, Duration.ofSeconds(20)).hover();
+        ElementsCollection buttonsMore = elements(".lnk_view > span");
+        buttonsMore.should(CollectionCondition.size(14)).get(0).click();
+        SelenideElement orangeColor = element("#color_13");
+        orangeColor.shouldNot(Condition.image).click();
+        assertEquals(orangeColor.getLocation(), new Point(1136, 640));//1019
+        assertEquals(orangeColor.getSize(), new Dimension(22, 22));
+        assertEquals(orangeColor.getCssValue("background-color"), "rgba(243, 156, 17, 1)");
         String currentUrl = WebDriverRunner.getWebDriver().getCurrentUrl();
-        Assertions.assertTrue(currentUrl.endsWith("color-orange"));
-        $(".color_pick:not(#color_13)").click();
+        assertTrue(currentUrl.endsWith("color-orange"));
+        SelenideElement blueColor = element(".color_pick:not(#color_13)");
+        blueColor.click();
         currentUrl = WebDriverRunner.getWebDriver().getCurrentUrl();
-        Assertions.assertTrue(currentUrl.contains("color-blue"));
-        SelenideElement element = $("#group_1");
-        if (element.is(Condition.name("group_1"))) {
-            element.click();
+        assertTrue(currentUrl.contains("color-blue"));
+        SelenideElement sizeBar = element("#group_1");
+        if (sizeBar.is(Condition.name("group_1"))) {
+            sizeBar.click();
         }
-        $("[title='M']").click();
+        SelenideElement mSize = element("[title='M']");
+        mSize.click();
         currentUrl = WebDriverRunner.getWebDriver().getCurrentUrl();
-        Assertions.assertTrue(currentUrl.contains("size-m"));
-        $("#group_1").shouldNotHave(Condition.exactText("Hello")).click();
-        $("[title='L']").click();
+        assertTrue(currentUrl.contains("size-m"));
+        sizeBar.shouldNotHave(Condition.exactText("Hello")).click();
+        SelenideElement lSize = element("[title='L']");
+        lSize.click();
         currentUrl = WebDriverRunner.getWebDriver().getCurrentUrl();
-        Assertions.assertTrue(currentUrl.contains("size-l"));
+        assertTrue(currentUrl.contains("size-l"));
     }
 
     @Tag("mail")
@@ -58,12 +66,16 @@ public class TestClass extends BaseTest {
             "ska@mail.ru, Qwerty123, Maksim test",
             "test22@gamil.com, Qwerty123, test test"
     })
-    public void test2(String mail, String password, String message) {
-        open(baseUrl);
-        $(".login").shouldBe(Condition.visible, Duration.ofSeconds(20)).click();
-        $("#email").shouldBe(Condition.empty).setValue(mail);
-        $("#passwd").shouldBe(Condition.empty).setValue(password).pressEnter();
-        Assertions.assertEquals(message, $(".account").shouldBe(Condition.exist,
+    public void loginOnSite(String mail, String password, String message) {
+        open(BASE_URL);
+        SelenideElement login = element(".login");
+        login.shouldBe(Condition.visible, Duration.ofSeconds(20)).click();
+        SelenideElement email = element("#email");
+        email.shouldBe(Condition.empty).setValue(mail);
+        SelenideElement passwd = element("#passwd");
+        passwd.shouldBe(Condition.empty).setValue(password).pressEnter();
+        SelenideElement account = element(".account");
+        assertEquals(message, account.shouldBe(Condition.exist,
                 Duration.ofSeconds(20)).getText());
     }
 
@@ -71,66 +83,72 @@ public class TestClass extends BaseTest {
     @Test
     @DisplayName("Adding an email to the newsletter")
     @Order(5)
-    public void test3() {
-        open(baseUrl);
-        $("#newsletter-input").shouldBe(Condition.name("email")).setValue("test@gmail.com").pressEnter();
-        Assertions.assertEquals("Newsletter : This email address is already registered.",
-                $(".alert").getText());
-        String randomEmail = "abcdefghijklmnopqrstuvwxyz";
-        char[] chArray = randomEmail.toCharArray();
-        Random random = new Random();
-        StringBuffer buffer = new StringBuffer();
-        for (int i = 0; i < 10; i++) {
-            buffer.append(chArray[random.nextInt(chArray.length)]);
-        }
-        buffer.append("@gmail.com");
-        randomEmail = buffer.toString();
-        $("#newsletter-input").shouldBe(Condition.name("email")).setValue(randomEmail).pressEnter();
-        Assertions.assertEquals("Newsletter : You have successfully subscribed to this newsletter.",
-                $(".alert").getText());
-        $("#newsletter-input").shouldBe(Condition.name("email")).setValue(randomEmail).pressEnter();
-        Assertions.assertEquals("Newsletter : This email address is already registered.",
-                $(".alert").getText());
+    public void newsletterEmail() {
+        open(BASE_URL);
+        SelenideElement newsletter = element("#newsletter-input");
+        newsletter.shouldBe(Condition.name("email")).setValue("test@gmail.com").pressEnter();
+        SelenideElement alert = element(".alert");
+        assertEquals("Newsletter : This email address is already registered.",
+                alert.getText());
+        newsletter.shouldBe(Condition.name("email")).setValue("testtest@gmail.com").pressEnter();
+        assertEquals("Newsletter : This email address is already registered.",
+                alert.getText());
 
     }
 
     @Test
     @DisplayName("Adding a product with parameters to the cart")
     @Order(1)
-    public void test4() {
-        open(baseUrl);
-        $("[alt='Blouse']").shouldBe(Condition.enabled, Duration.ofSeconds(20)).hover();
-        $$(".lnk_view span").should(CollectionCondition.size(14)).get(1).click();
-        $("#quantity_wanted").shouldBe(Condition.name("qty")).setValue("3");
-        $("#group_1").shouldBe(Condition.name("group_1")).click();
-        $("[title='L']").click();
-        $("#color_11").shouldBe(Condition.name("Black")).click();
-        $("#add_to_cart > button").click();
-        $(".button-medium").shouldBe(Condition.visible, Duration.ofSeconds(10)).click();
-        Assertions.assertEquals("Color : Black, Size : L", $("small:nth-child(3) a")
-                .shouldBe(Condition.exist, Duration.ofSeconds(20)).getText());
-        Assertions.assertEquals("3", $(".cart_quantity_input").shouldBe(Condition.exist).getValue());
-        closeWebDriver();
+    public void addProductToTheCart() {
+        open(BASE_URL);
+        SelenideElement blouseClothes = element("[alt='Blouse']");
+        blouseClothes.shouldBe(Condition.enabled, Duration.ofSeconds(20)).hover();
+        ElementsCollection buttonsMore = elements(".lnk_view span");
+        buttonsMore.should(CollectionCondition.size(14)).get(1).click();
+        SelenideElement quantity = element("#quantity_wanted");
+        quantity.shouldBe(Condition.name("qty")).setValue("3");
+        SelenideElement sizeBar = element("#group_1");
+        sizeBar.shouldBe(Condition.name("group_1")).click();
+        SelenideElement lSize = element("[title='L']");
+        lSize.click();
+        SelenideElement blackColor = element("#color_11");
+        blackColor.shouldBe(Condition.name("Black")).click();
+        SelenideElement addToCart = element("#add_to_cart > button");
+        addToCart.click();
+        SelenideElement checkout = element(".button-medium");
+        checkout.shouldBe(Condition.visible, Duration.ofSeconds(10)).click();
+        SelenideElement info = element("small:nth-child(3) a");
+        assertEquals("Color : Black, Size : L", info.shouldBe(Condition.exist).getText());
+        SelenideElement quantityInfo = element(".cart_quantity_input");
+        assertEquals("3", quantityInfo.shouldBe(Condition.exist).getValue());
     }
 
     @Test
     @DisplayName("Adding products to compare")
     @Order(2)
-    public void test5() {
-        open(baseUrl);
-        $$(".sf-with-ul").should(CollectionCondition.size(4), Duration.ofSeconds(20)).get(0).click();
-        $("[alt$='shirts']").should(Condition.visible).hover();
-        $$(".add_to_compare").should(CollectionCondition.size(7)).get(0).click();
-        $(".total-compare-val").shouldHave(Condition.text("1"), Duration.ofSeconds(20));
-        $("[alt='Blouse']").should(Condition.visible, Duration.ofSeconds(10)).hover();
-        $$(".add_to_compare").should(CollectionCondition.size(7), Duration.ofSeconds(10)).get(1).click();
-        $(".total-compare-val").shouldHave(Condition.text("2"), Duration.ofSeconds(20));
-        $("[alt='Printed Dress']").should(Condition.visible).hover();
-        $$(".add_to_compare").should(CollectionCondition.size(7)).get(2).click();
-        $(".bt_compare").click();
-        Assertions.assertTrue($$("a.product-name").get(0).getText().contains("Faded Short Sleeve T-shirts"));
-        Assertions.assertTrue($$("a.product-name").get(1).getText().contains("Blouse"));
-        Assertions.assertTrue($$("a.product-name").get(2).getText().contains("Printed Dress"));
+    public void addToCompare() {
+        open(BASE_URL);
+        ElementsCollection blocks = elements(".sf-with-ul");
+        blocks.should(CollectionCondition.size(4), Duration.ofSeconds(20)).get(0).click();
+        SelenideElement shirtsClothes = element("[alt$='shirts']");
+        shirtsClothes.should(Condition.visible).hover();
+        ElementsCollection addToCompareButtoms = elements(".add_to_compare");
+        addToCompareButtoms.should(CollectionCondition.size(7)).get(0).click();
+        SelenideElement compareTotal = element(".total-compare-val");
+        compareTotal.shouldHave(Condition.text("1"), Duration.ofSeconds(20));
+        SelenideElement blouseClothes = element("[alt='Blouse']");
+        blouseClothes.should(Condition.visible, Duration.ofSeconds(10)).hover();
+        addToCompareButtoms.should(CollectionCondition.size(7), Duration.ofSeconds(10)).get(1).click();
+        compareTotal.shouldHave(Condition.text("2"), Duration.ofSeconds(20));
+        SelenideElement printedClothes = element("[alt='Printed Dress']");
+        printedClothes.should(Condition.visible).hover();
+        addToCompareButtoms.should(CollectionCondition.size(7)).get(2).click();
+        SelenideElement compare = element(".bt_compare");
+        compare.click();
+        ElementsCollection info = elements("a.product-name");
+        assertTrue(info.get(0).getText().contains("Faded Short Sleeve T-shirts"));
+        assertTrue(info.get(1).getText().contains("Blouse"));
+        assertTrue(info.get(2).getText().contains("Printed Dress"));
 
     }
 }

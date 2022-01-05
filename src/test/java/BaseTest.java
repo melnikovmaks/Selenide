@@ -1,17 +1,17 @@
 import com.codeborne.selenide.Configuration;
+import com.codeborne.selenide.Selenide;
 import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeAll;
 import org.openqa.selenium.chrome.ChromeOptions;
 
-import static com.codeborne.selenide.Selenide.closeWebDriver;
 
 abstract public class BaseTest {
 
     @BeforeAll
-    public static void setAll() {
+    public static void setUp() {
         Configuration.browser = "chrome";
-        Configuration.browserVersion = "92.1";
+        Configuration.browserVersion = "97.0";
         Configuration.screenshots = true;
         Configuration.browserSize = "1600x1000";
         Configuration.headless = false;
@@ -21,13 +21,13 @@ abstract public class BaseTest {
     }
 
     @AfterAll
-    public static void afterAll() {
+    public static void cleanUp() {
         System.out.println("@AfterAll executed");
     }
 
     @AfterEach
-    public void tearThis() {
+    public void tearDown() {
         System.out.println("@AfterEach executed");
-        closeWebDriver();
+        Selenide.closeWindow();
     }
 }
