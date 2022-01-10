@@ -11,10 +11,10 @@ abstract public class BaseTest {
     @BeforeAll
     public static void setUp() {
         Configuration.browser = "chrome";
-        Configuration.browserVersion = "97.0";
         Configuration.screenshots = true;
         Configuration.browserSize = "1600x1000";
         Configuration.headless = false;
+        Configuration.baseUrl = "http://automationpractice.com/";
         ChromeOptions options = new ChromeOptions();
         options.addArguments("incognito");
         Configuration.browserCapabilities = options;

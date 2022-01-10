@@ -4,11 +4,18 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="529fd3f6-5bf0-47a3-828e-6acf6b9dd2ee" name="Changes" comment="test">
-      <change afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
+    <list default="true" id="529fd3f6-5bf0-47a3-828e-6acf6b9dd2ee" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Main.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/test/Test1.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/test/Test2.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/test/Test3.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/test/Test4.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/test/Test5.java" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/test/java/BaseTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/BaseTest.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/test/java/TestClass.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/TestClass.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/Main.class" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/target/test-classes/TestClass.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/test-classes/TestClass.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/test-classes/baseTest.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/test-classes/baseTest.class" afterDir="false" />
     </list>
@@ -70,6 +77,16 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <configuration name="TestClass.checkScroll" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="srlenium" />
+      <option name="PACKAGE_NAME" value="" />
+      <option name="MAIN_CLASS_NAME" value="TestClass" />
+      <option name="METHOD_NAME" value="checkScroll" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <configuration name="TestClass.choiceOfColorAndSize" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="srlenium" />
       <option name="PACKAGE_NAME" value="" />
@@ -80,11 +97,11 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="TestClass.test" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="TestClass.scrollTo" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="srlenium" />
       <option name="PACKAGE_NAME" value="" />
       <option name="MAIN_CLASS_NAME" value="TestClass" />
-      <option name="METHOD_NAME" value="test" />
+      <option name="METHOD_NAME" value="scrollTo" />
       <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
@@ -100,23 +117,13 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="TestClass.test4" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="srlenium" />
-      <option name="PACKAGE_NAME" value="" />
-      <option name="MAIN_CLASS_NAME" value="TestClass" />
-      <option name="METHOD_NAME" value="test4" />
-      <option name="TEST_OBJECT" value="method" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
     <recent_temporary>
       <list>
         <item itemvalue="JUnit.TestClass" />
-        <item itemvalue="JUnit.TestClass.test2" />
+        <item itemvalue="JUnit.TestClass.checkScroll" />
         <item itemvalue="JUnit.TestClass.choiceOfColorAndSize" />
-        <item itemvalue="JUnit.TestClass.test" />
-        <item itemvalue="JUnit.TestClass.test4" />
+        <item itemvalue="JUnit.TestClass.scrollTo" />
+        <item itemvalue="JUnit.TestClass.test2" />
       </list>
     </recent_temporary>
   </component>
@@ -160,7 +167,9 @@
       <workItem from="1640118297771" duration="11345000" />
       <workItem from="1640537643979" duration="17338000" />
       <workItem from="1640939285996" duration="3450000" />
-      <workItem from="1641307549059" duration="19688000" />
+      <workItem from="1641307549059" duration="20155000" />
+      <workItem from="1641744907420" duration="3645000" />
+      <workItem from="1641798625791" duration="2046000" />
     </task>
     <task id="LOCAL-00001" summary="test">
       <created>1639922457118</created>
@@ -176,7 +185,14 @@
       <option name="project" value="LOCAL" />
       <updated>1641394578170</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="New naming of methods&#10;Use SelenideElements&#10;add .gitignore">
+      <created>1641403148290</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1641403148290</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -189,6 +205,7 @@
       <path value="$PROJECT_DIR$/desktop-tutorial" />
     </ignored-roots>
     <MESSAGE value="test" />
-    <option name="LAST_COMMIT_MESSAGE" value="test" />
+    <MESSAGE value="New naming of methods&#10;Use SelenideElements&#10;add .gitignore" />
+    <option name="LAST_COMMIT_MESSAGE" value="New naming of methods&#10;Use SelenideElements&#10;add .gitignore" />
   </component>
 </project>
