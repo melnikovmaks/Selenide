@@ -46,13 +46,13 @@ public class TestClass extends BaseTest {
         if (sizeSelector.is(Condition.name("group_1"))) {
             sizeSelector.click();
         }
-        SelenideElement mSize = element("[title='M']");
-        mSize.click();
+        SelenideElement mSizeSelector = element("[title='M']");
+        mSizeSelector.click();
         currentUrl = WebDriverRunner.getWebDriver().getCurrentUrl();
         assertTrue(currentUrl.contains("size-m"));
         sizeSelector.shouldNotHave(Condition.exactText("Hello")).click();
-        SelenideElement lSize = element("[title='L']");
-        lSize.click();
+        SelenideElement lSizeSelector = element("[title='L']");
+        lSizeSelector.click();
         currentUrl = WebDriverRunner.getWebDriver().getCurrentUrl();
         assertTrue(currentUrl.contains("size-l"));
     }
@@ -69,10 +69,10 @@ public class TestClass extends BaseTest {
         open("/");
         SelenideElement loginField = element(".login");
         loginField.shouldBe(Condition.visible, Duration.ofSeconds(20)).click();
-        SelenideElement email = element("#email");
-        email.shouldBe(Condition.empty).setValue(mail);
-        SelenideElement passwd = element("#passwd");
-        passwd.shouldBe(Condition.empty).setValue(password).pressEnter();
+        SelenideElement emailField = element("#email");
+        emailField.shouldBe(Condition.empty).setValue(mail);
+        SelenideElement passwdField = element("#passwd");
+        passwdField.shouldBe(Condition.empty).setValue(password).pressEnter();
         SelenideElement account = element(".account");
         assertEquals(message, account.shouldBe(Condition.exist,
                 Duration.ofSeconds(20)).getText());
@@ -84,15 +84,14 @@ public class TestClass extends BaseTest {
     @Order(5)
     public void newsletterEmail() {
         open("/");
-        SelenideElement newsletter = element("#newsletter-input");
-        newsletter.shouldBe(Condition.name("email")).setValue("test@gmail.com").pressEnter();
-        SelenideElement alert = element(".alert");
+        SelenideElement newsletterField = element("#newsletter-input");
+        newsletterField.shouldBe(Condition.name("email")).setValue("test@gmail.com").pressEnter();
+        SelenideElement alertMessage = element(".alert");
         assertEquals("Newsletter : This email address is already registered.",
-                alert.getText());
-        newsletter.shouldBe(Condition.name("email")).setValue("testtest@gmail.com").pressEnter();
+                alertMessage.getText());
+        newsletterField.shouldBe(Condition.name("email")).setValue("testtest@gmail.com").pressEnter();
         assertEquals("Newsletter : This email address is already registered.",
-                alert.getText());
-
+                alertMessage.getText());
     }
 
     @Test
@@ -102,14 +101,14 @@ public class TestClass extends BaseTest {
         open("/");
         SelenideElement blouseClothes = element("[alt='Blouse']");
         blouseClothes.shouldBe(Condition.enabled, Duration.ofSeconds(20)).hover();
-        ElementsCollection buttonsMore = elements(".lnk_view span");
-        buttonsMore.should(CollectionCondition.size(14)).get(1).click();
+        ElementsCollection moreButtons = elements(".lnk_view span");
+        moreButtons.should(CollectionCondition.size(14)).get(1).click();
         SelenideElement quantity = element("#quantity_wanted");
         quantity.shouldBe(Condition.name("qty")).setValue("3");
         SelenideElement sizeSelector = element("#group_1");
         sizeSelector.shouldBe(Condition.name("group_1")).click();
-        SelenideElement lSize = element("[title='L']");
-        lSize.click();
+        SelenideElement lSizeSelector = element("[title='L']");
+        lSizeSelector.click();
         SelenideElement blackColorPick = element("#color_11");
         blackColorPick.shouldBe(Condition.name("Black")).click();
         SelenideElement addToCart = element("#add_to_cart > button");
@@ -142,12 +141,11 @@ public class TestClass extends BaseTest {
         SelenideElement printedDress = element("[alt='Printed Dress']");
         printedDress.should(Condition.visible).hover();
         addToCompareButtons.should(CollectionCondition.size(7)).get(2).click();
-        SelenideElement compare = element(".bt_compare");
-        compare.click();
+        SelenideElement compareButton = element(".bt_compare");
+        compareButton.click();
         ElementsCollection info = elements("a.product-name");
         assertTrue(info.get(0).getText().contains("Faded Short Sleeve T-shirts"));
         assertTrue(info.get(1).getText().contains("Blouse"));
         assertTrue(info.get(2).getText().contains("Printed Dress"));
-
     }
 }
