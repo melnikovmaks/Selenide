@@ -67,14 +67,14 @@ public class TestClass extends BaseTest {
     })
     public void loginOnSite(String mail, String password, String message) {
         open("/");
-        SelenideElement loginField = element(".login");
-        loginField.shouldBe(Condition.visible, Duration.ofSeconds(20)).click();
+        SelenideElement signInButton = element(".login");
+        signInButton.shouldBe(Condition.visible, Duration.ofSeconds(20)).click();
         SelenideElement emailField = element("#email");
         emailField.shouldBe(Condition.empty).setValue(mail);
         SelenideElement passwdField = element("#passwd");
         passwdField.shouldBe(Condition.empty).setValue(password).pressEnter();
-        SelenideElement account = element(".account");
-        assertEquals(message, account.shouldBe(Condition.exist,
+        SelenideElement headerUserInfo = element(".account");
+        assertEquals(message, headerUserInfo.shouldBe(Condition.exist,
                 Duration.ofSeconds(20)).getText());
     }
 
@@ -103,20 +103,20 @@ public class TestClass extends BaseTest {
         blouseClothes.shouldBe(Condition.enabled, Duration.ofSeconds(20)).hover();
         ElementsCollection moreButtons = elements(".lnk_view span");
         moreButtons.should(CollectionCondition.size(14)).get(1).click();
-        SelenideElement quantity = element("#quantity_wanted");
-        quantity.shouldBe(Condition.name("qty")).setValue("3");
+        SelenideElement quantityField = element("#quantity_wanted");
+        quantityField.shouldBe(Condition.name("qty")).setValue("3");
         SelenideElement sizeSelector = element("#group_1");
         sizeSelector.shouldBe(Condition.name("group_1")).click();
         SelenideElement lSizeSelector = element("[title='L']");
         lSizeSelector.click();
         SelenideElement blackColorPick = element("#color_11");
         blackColorPick.shouldBe(Condition.name("Black")).click();
-        SelenideElement addToCart = element("#add_to_cart > button");
-        addToCart.click();
-        SelenideElement checkout = element(".button-medium");
-        checkout.shouldBe(Condition.visible, Duration.ofSeconds(10)).click();
-        SelenideElement info = element("small:nth-child(3) a");
-        assertEquals("Color : Black, Size : L", info.shouldBe(Condition.exist).getText());
+        SelenideElement addToCartButton = element("#add_to_cart > button");
+        addToCartButton.click();
+        SelenideElement checkoutButton = element(".button-medium");
+        checkoutButton.shouldBe(Condition.visible, Duration.ofSeconds(10)).click();
+        SelenideElement descriptionItem = element("small:nth-child(3) a");
+        assertEquals("Color : Black, Size : L", descriptionItem.shouldBe(Condition.exist).getText());
         SelenideElement quantityInfo = element(".cart_quantity_input");
         assertEquals("3", quantityInfo.shouldBe(Condition.exist).getValue());
     }
@@ -126,8 +126,8 @@ public class TestClass extends BaseTest {
     @Order(2)
     public void addToCompare() {
         open("/");
-        ElementsCollection blocks = elements(".sf-with-ul");
-        blocks.should(CollectionCondition.size(4), Duration.ofSeconds(20)).get(0).click();
+        ElementsCollection menuBlocksButtons = elements(".sf-with-ul");
+        menuBlocksButtons.should(CollectionCondition.size(4), Duration.ofSeconds(20)).get(0).click();
         SelenideElement fadedTShirt = element("[alt$='shirts']");
         fadedTShirt.should(Condition.visible).hover();
         ElementsCollection addToCompareButtons = elements(".add_to_compare");
@@ -143,9 +143,9 @@ public class TestClass extends BaseTest {
         addToCompareButtons.should(CollectionCondition.size(7)).get(2).click();
         SelenideElement compareButton = element(".bt_compare");
         compareButton.click();
-        ElementsCollection info = elements("a.product-name");
-        assertTrue(info.get(0).getText().contains("Faded Short Sleeve T-shirts"));
-        assertTrue(info.get(1).getText().contains("Blouse"));
-        assertTrue(info.get(2).getText().contains("Printed Dress"));
+        ElementsCollection productNames = elements("a.product-name");
+        assertTrue(productNames.get(0).getText().contains("Faded Short Sleeve T-shirts"));
+        assertTrue(productNames.get(1).getText().contains("Blouse"));
+        assertTrue(productNames.get(2).getText().contains("Printed Dress"));
     }
 }
