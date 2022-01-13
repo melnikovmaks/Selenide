@@ -16,12 +16,12 @@ public class TestClassTestNG extends BaseTestTestNG {
     @Test(description = "It is not useful test", enabled = false)
     public void checkScroll() {
         open("/");
-        ElementsCollection images = elements(".item-img");
-        images.should(CollectionCondition.size(7)).get(4).scrollTo();
+        ElementsCollection banners = elements(".item-img");
+        banners.should(CollectionCondition.size(7)).get(4).scrollTo();
     }
 
     @Test(description = "Check choosing of color and size in Faded Short Sleeve T-shirts page",
-            groups={"addToCart"},
+            groups = {"addToCart"},
             priority = 3,
             invocationCount = 2)
     public void choiceOfColorAndSize() {
@@ -56,7 +56,7 @@ public class TestClassTestNG extends BaseTestTestNG {
         assertTrue(currentUrl.contains("size-l"));
     }
 
-    @Test(dataProvider = "accounts", priority = 4, groups="mail")
+    @Test(dataProvider = "accounts", priority = 4, groups = "mail")
     public void loginOnSite(String mail, String password, String message) {
         open("/");
         SelenideElement signInButton = element(".login");
@@ -70,7 +70,7 @@ public class TestClassTestNG extends BaseTestTestNG {
                 Duration.ofSeconds(20)).getText());
     }
 
-    @Test(description = "Adding an email to the newsletter", priority = 5, groups="mail")
+    @Test(description = "Adding an email to the newsletter", priority = 5, groups = "mail")
     public void newsletterEmail() {
         open("/");
         SelenideElement newsletterField = element("#newsletter-input");
@@ -84,7 +84,7 @@ public class TestClassTestNG extends BaseTestTestNG {
     }
 
     @Test(description = "Adding a product Blouse with parameters Quantity = 3 ,size = L, color = black to the cart",
-            groups={"addToCart"},
+            groups = {"addToCart"},
             priority = 1)
     public void addProductToTheCart() {
         open("/");
