@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="Test groups 'addToCart'" parallel="methods">
+    <test verbose="2" thread-count="2" preserve-order="true"
+          name="/Users/maksimmelnikov/IdeaProjects/selenide/src/test/java/TestClassTestNG.java">
+        <groups>
+            <run>
+                <include name="addToCart"/>
+            </run>
+        </groups>
+        <classes>
+            <class name="TestClassTestNG"></class>
+        </classes>
+    </test>
+        <test name="all tests" thread-count="3" verbose="1">
+            <classes>
+                <class name="TestClassTestNG"></class>
+            </classes>
+        </test>
+    <test name="random 3 methods" preserve-order="false" verbose="10">
+        <classes>
+            <class name="TestClassTestNG">
+                <methods>
+                    <include name="loginOnSite"/>
+                    <include name="choiceOfColorAndSize"/>
+                    <include name="newsletterEmail"/>
+                </methods>
+            </class>
+            <class name="TestClassTestNG"/>
+        </classes>
+    </test>
+</suite>
