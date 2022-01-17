@@ -51,6 +51,6 @@ public class BaseTestTestNG {
 
     @AfterGroups("addToCart")
     public void tearDownSecurity() {
-        System.out.println("addToCart");
+        System.out.println("@AfterGroups executed");
     }
 }
